@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
+  # get 'relationships/create'
+
+  # get 'relationships/destroy'
+
 	devise_for :users
-  resources :users,only: [:show,:edit,:update,:index]
+  resources :users,only: [:show,:edit,:update,:index] do
+    resource :relationships, only: [:create, :destroy]
+    get :follows, on: :member # 追加
+    get :followers, on: :member # 追加
+  end
   root 'home#top'
   get 'home/about'
 
