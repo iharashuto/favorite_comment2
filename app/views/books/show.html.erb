@@ -48,6 +48,7 @@
             <% end %>
           </td>
           <td><%= book_comment.comment %></td>
+          <td></td>
           <% unless current_user != book_comment.user %>
             <td><%= link_to 'Destroy', book_book_comments_path(book_comment.id), class: 'btn-sm btn-danger', method: :delete %></td>
           <% end %>
@@ -57,7 +58,7 @@
     <div class="comment-form">
       <%= form_for [@book, @book_comment] do |f| %>
         <%= f.text_area :comment, size: "90x5" %>
-        <%= f.submit '送信' %>
+        <%= f.submit '送信' , class:"btn btn-info"%>
       <% end %>
     </div>
 
